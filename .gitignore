@@ -6,5 +6,5 @@ build/
 *.lnk
 *.log
 .vscode/
-/.build/*
+.build/*
 .gitignore

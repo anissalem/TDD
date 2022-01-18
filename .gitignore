@@ -1,10 +1,2 @@
-# Specify untracked files to ignore
-# Go to https://www.gitignore.io/ for suitable templates
-swc/build/test.py
-build/
-*.pyc
-*.lnk
-*.log
-.vscode/
 .build/*
-.gitignore
+

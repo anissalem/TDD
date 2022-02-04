@@ -5,13 +5,24 @@
 
 size_t RomanToInt_SwitchCase(const char roman_letter);
 size_t AccumulatedValue(const char *roman_letter, int size);
+bool validationRomanLetters(const char *roman_letter);
+bool validationRomanString(const char *roman_letter, int size);
+bool validationCounterRomanString(const char *roman_letter, int size);
+
 
 size_t RomanToInt(const char *roman_letter) {
-  size_t ret = 0;
+  size_t ret = -1;
   int lenght = strlen(roman_letter);
 
-  return AccumulatedValue(roman_letter, lenght);
+  if (validationCounterRomanString(roman_letter, lenght) )
+  {
+    ret = AccumulatedValue(roman_letter, lenght);
+  }
+
+  return ret;
 }
+
+
 
 size_t RomanToInt_SwitchCase(const char roman_letter) {
   switch (roman_letter) {
@@ -41,3 +52,60 @@ size_t AccumulatedValue(const char *roman_letter, int size) {
   }
   return retval;
 }
+
+bool validationRomanLetters(const char roman_letter)
+{
+  return RomanToInt_SwitchCase(roman_letter) == -1;
+}
+
+bool validationRomanString(const char *roman_letter, int size)
+{
+  for (int i = 0; i < size; i++)
+  {
+    if (validationRomanLetters(roman_letter[i]))
+    {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+
+bool validationCounterRomanString(const char *roman_letter, int size)
+{
+  int s_counterValue = 1;
+  char s_prevValue = roman_letter[0];
+
+  if (validationRomanLetters(s_prevValue))
+  {
+    return false;
+  }
+
+  for (int i = 1; i < size; i++)
+  {
+    if (validationRomanLetters(roman_letter[i]))
+    {
+      return false;
+    }
+
+    if (s_prevValue == roman_letter[i])
+    {
+      s_counterValue++;
+    }
+    else
+    {
+      s_counterValue = 1;
+    }
+
+    if (s_counterValue > 3)
+    {
+      return false;
+    }
+
+    s_prevValue = roman_letter[i];
+  }
+
+ return true;
+}
+

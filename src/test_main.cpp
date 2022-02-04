@@ -7,3 +7,5 @@
 TEST(Maintest, RomanIequal1) { EXPECT_EQ(1, RomanToInt("I")); }
 
 TEST(Maintest, RomanIequal2) { EXPECT_EQ(2, RomanToInt("II")); }
+
+TEST(Maintest, RomanIequal2) { EXPECT_EQ(2, RomanToInt("III")); }
